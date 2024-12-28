@@ -1,0 +1,9 @@
+{
+  "verbose": false,
+  "ignore": ["node_modules"],
+  "execMap": {
+    "js": "tsc && tsc-alias && node --trace-warnings "
+  },
+  "watch": ["src/*", ".env", "package.json"],
+  "ext": "ts,js,json"
+}
