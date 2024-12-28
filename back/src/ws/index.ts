@@ -125,7 +125,7 @@ export const updateGame: Types.UpdateGameFunc = (io, ws) => (time) => {
 
   const userTotalTime = _calculateTimeUser(sessionMatch.id, user.id);
 
-  if (userTotalTime >= 5) {
+  if (userTotalTime >= 30) {
     const sessionUser = sessionUserModel.getOne({ session: session.id, user: user.id });
     sessionUserModel.update(sessionUser.id, { active: false });
     sessionMatchModel.update(sessionMatch.id, { active: false, loser: user.id });
