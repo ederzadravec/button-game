@@ -1,6 +1,7 @@
 export interface GameUser {
   id: number;
   name: string;
+  time?: number;
 }
 
 export interface Game {
