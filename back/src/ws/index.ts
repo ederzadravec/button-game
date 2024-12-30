@@ -198,6 +198,7 @@ const sendGameStatus = (io: Server, ws: Socket, sendTo: 'user' | 'room') => {
   const sessionModel = Model<DBTypes.Session>('sessions');
   const sessionUserModel = Model<DBTypes.SessionUser>('sessionUser');
   const sessionMatchModel = Model<DBTypes.SessionMatch>('sessionMatch');
+  const sessionMatchTimeModel = Model<DBTypes.SessionMatchTimes>('sessionMatchTime');
 
   let game: Partial<GameTypes.Game> = {};
 
@@ -219,15 +220,31 @@ const sendGameStatus = (io: Server, ws: Socket, sendTo: 'user' | 'room') => {
 
     if (session) {
       const match = sessionMatchModel.getOne({ session: session.id, active: true });
+      const activeUsers = sessionUserModel.getAll({ session: session.id, active: true }).map((item) => item.user);
+
+      game.activeUsers = activeUsers;
 
       if (match) {
         game.running = true;
         game.currentUser = match.currentUser;
+
+        const activeUsersWithTime = users
+          .filter((item) => activeUsers.includes(item.id))
+          .map((item) => {
+            const sessionMatchTimes = sessionMatchTimeModel.getAll({ user: item.id, sessionMatch: match.id });
+
+            const time = sessionMatchTimes.reduce((acc, item) => acc + item.time, 0) / 1000;
+
+            const roundedTime = Math.trunc(time * 1000) / 1000;
+
+            return {
+              ...item,
+              time: roundedTime,
+            };
+          });
+
+        game.users = activeUsersWithTime;
       }
-
-      const activeUsers = sessionUserModel.getAll({ session: session.id, active: true });
-
-      game.activeUsers = activeUsers.map((item) => item.user);
 
       if (session.winner) {
         game.winner = session.winner;
