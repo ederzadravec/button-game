@@ -28,6 +28,18 @@ Por ultimo, executar:
 
 `yarn dev` ou `npm run dev`.
 
+## Frontend Angular
+
+Para rodar o frontend em angular, é necessário instalar as dependencias: 
+
+`yarn install` ou `npm i`
+
+Se necessário, pode ser alterado o endpoint que a api está sendo executada no arquivo `src/environments/environment.ts`
+
+Por ultimo, executar:
+
+`yarn start` ou `npm run start`.
+
 ## Funcionamento
 
 O jogo irá solicitar inicialmente o nome do jogador;
