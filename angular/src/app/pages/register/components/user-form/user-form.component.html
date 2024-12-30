@@ -1,0 +1,5 @@
+<span id="title">Qual seu nome?</span>
+
+<component-text-input (change)="handleOnChange($event)" />
+
+<component-button [disabled]="!user.length" (click)="handleOnNext()" label="Avançar" />

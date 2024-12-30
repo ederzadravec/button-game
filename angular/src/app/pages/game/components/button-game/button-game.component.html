@@ -1,0 +1,12 @@
+@if (showButton) {
+<button
+  id="button"
+  [class.active]="activeButton"
+  [class.inactive]="!activeButton"
+  (click)="handleOnClick()"
+>
+  Clique Aqui
+</button>
+} @else {
+<span id="wait"> Aguarde sua vez </span>
+}

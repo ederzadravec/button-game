@@ -1,0 +1,11 @@
+<span id="title">Em qual sala deseja jogar?</span>
+
+<component-text-input (change)="handleOnChange($event)" />
+
+<component-button
+  [disabled]="!room.length"
+  label="Avançar"
+  (click)="handleOnEnterRoom()"
+/>
+
+<component-button label="Criar nova sala" (click)="handleOnCreateRoom()" />

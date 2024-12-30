@@ -1,0 +1,21 @@
+<span id="title">Jogadores ativos</span>
+
+<div id="players">
+  @for (player of activeUsers; track player.id) {
+  <span class="player" [class.bold]="player.id === currentUser">
+    {{ player.name }} - {{ player.time || 0 }}
+  </span>
+  }
+</div>
+
+@if (inactiveUsers.length) {
+<span id="title">Eliminados</span>
+
+<div id="players">
+  @for (player of inactiveUsers; track player.id) {
+  <span class="player">
+    {{ player.name }}
+  </span>
+  }
+</div>
+}

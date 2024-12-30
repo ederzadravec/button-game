@@ -1,0 +1,5 @@
+<span id="title">Aguardando outros jogadores - Sala {{ game?.room }}</span>
+
+<span id="legend">{{ game?.users?.length || 0 }} na sala</span>
+
+<component-button label="Iniciar" (click)="handleOnStart()" />

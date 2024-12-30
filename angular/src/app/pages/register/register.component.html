@@ -1,0 +1,7 @@
+@if (game?.room) {
+<page-register-waiting-game />
+} @else if (user) {
+<page-register-room-form />
+} @else {
+<page-register-user-form />
+}

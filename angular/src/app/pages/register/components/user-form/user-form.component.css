@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 20px;
+}
+
+#container {
+  display: flex;
+  align-self: center;
+}
+
+#title {
+  font-size: 18px;
+}

@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
